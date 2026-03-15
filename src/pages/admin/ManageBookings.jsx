@@ -1,14 +1,27 @@
 
-import { useMyBookingsQuery } from "../../api/bookingApi";
+import { toast } from "react-toastify";
+import { useDeleteBookingMutation, useMyBookingsQuery } from "../../api/bookingApi";
 
 export default function MyBookings() {
 
   const { data, isLoading } = useMyBookingsQuery();
+  const [deleteBooking] = useDeleteBookingMutation();
 
   if (isLoading) {
     return <div className="p-6 text-lg">Loading bookings...</div>;
   }
 
+
+
+const handleDelete = async (bookingId) => {
+  try {
+    await deleteBooking(bookingId).unwrap();
+    toast.success("Booking deleted successfully");
+  } catch (error) {
+    toast.error(error?.data?.message || "Delete failed");
+  }
+};
+  
   return (
     <div className="p-6 max-w-6xl mx-auto">
 
@@ -79,8 +92,9 @@ export default function MyBookings() {
             {/* Status */}
             <div className="mt-4">
               <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
-                Confirmed
+                {booking.status}
               </span>
+              <div className="text-red-500 underline fon-bold" onClick={(e)=>handleDelete(booking._id)}>Delete</div>
             </div>
 
           </div>

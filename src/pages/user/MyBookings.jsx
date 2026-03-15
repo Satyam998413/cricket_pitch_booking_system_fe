@@ -91,7 +91,7 @@ export default function MyBookings() {
             {/* Status */}
             <div className="mt-4">
               <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
-                Confirmed
+               {booking.status}
               </span>
             </div>
 

@@ -29,7 +29,16 @@ export const bookingApi = apiSlice.injectEndpoints({
     myBookings: builder.query({
       query: () => "/booking/my-bookings",
       providesTags: ["Booking"]
-    })
+    }),
+
+     // Delete booking
+    deleteBooking: builder.mutation({
+      query: (bookingId) => ({
+        url: `/booking/${bookingId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Booking"],
+    }),
 
   })
 });
@@ -38,5 +47,6 @@ export const {
   useGetSlotsQuery,
   useReserveSlotMutation,
   useConfirmBookingMutation,
-  useMyBookingsQuery
+  useMyBookingsQuery,
+  useDeleteBookingMutation,
 } = bookingApi;
