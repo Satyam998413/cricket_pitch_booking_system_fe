@@ -6,7 +6,7 @@ import { useGetPitchesQuery } from "../../api/pitchApi";
 export default function AdminDashboard() {
 
 
-   const { data, isLoading } = useMyBookingsQuery();
+   const { data } = useMyBookingsQuery();
   
  const {data:pitches}=useGetPitchesQuery();
     const upcomingBookings =

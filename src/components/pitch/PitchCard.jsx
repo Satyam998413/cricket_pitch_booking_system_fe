@@ -8,7 +8,7 @@ export default function PitchCard({ pitch ,setPitch}) {
   const user=useSelector((state)=>state.auth.user)
   const navigate = useNavigate();
 
-  const [deletePitch,isLoading]=useDeletePitchMutation();
+  const [deletePitch]=useDeletePitchMutation();
 
    const handleDeletePitch = async (e,pitch) => {
       e.preventDefault();
