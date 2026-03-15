@@ -21,7 +21,7 @@ export default function Signup() {
 
     try {
 
-      const data = await register({
+      await register({
         username: name,
         email,
         password

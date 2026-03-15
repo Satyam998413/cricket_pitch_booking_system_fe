@@ -98,7 +98,8 @@ export default function PitchDetails() {
       </div>
 
       {/* Slot Container */}
-      <div className="bg-white border rounded-xl shadow-sm p-6">
+
+      {!selectedSlot&& <div className="bg-white border rounded-xl shadow-sm p-6">
 
         <h3 className="text-lg font-semibold mb-4">
           Available Slots
@@ -116,7 +117,8 @@ export default function PitchDetails() {
           />
         )}
 
-      </div>
+      </div>}
+     
 
       {/* Selected Slot Info */}
       {selectedSlot && (
@@ -130,13 +132,20 @@ export default function PitchDetails() {
               {date} • {selectedSlot}
             </p>
           </div>
-
+<div className="gap-4">
           <button
             onClick={handleBooking}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold transition shadow"
+            className="bg-green-500 mx-3 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold transition shadow"
           >
             Confirm Booking
           </button>
+           <button
+            onClick={()=>{window.location.reload()}}
+            className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold transition shadow"
+          >
+            Re-Select Slot
+          </button>
+          </div>
 
         </div>
       )}
